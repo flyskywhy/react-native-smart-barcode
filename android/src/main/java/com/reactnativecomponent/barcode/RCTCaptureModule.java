@@ -8,12 +8,12 @@ import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.Promise;
 import com.google.zxing.BarcodeFormat;
 import com.reactnativecomponent.barcode.decoding.DecodeUtil;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
 
 public class RCTCaptureModule extends ReactContextBaseJavaModule {
     private ReactApplicationContext mContext;
@@ -127,23 +127,20 @@ public class RCTCaptureModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void DecodeFromPath(final String path,
-                              final Callback errorCallback,
-                               final Callback successCallback) {
+    public void DecodeFromPath(final String path, final Promise promise) {
 
             new Thread(new Runnable() {
                 public void run() {
                     try {
-                    String s = Environment.getExternalStorageDirectory()
-                            .getAbsolutePath() + "/" + "IMG_20161011_170552.jpg";
+                    // String s = Environment.getExternalStorageDirectory()
+                    //         .getAbsolutePath() + "/" + "IMG_20161011_170552.jpg";
+                    String s = path;
                     //不加这个分号则不能自动添加代码
-
-                    String ResultStr = DecodeUtil.getStringFromQRCode(s);
-                        successCallback.invoke(ResultStr);
-
+                    String resultStr = DecodeUtil.getStringFromQRCode(s);
+                    promise.resolve(resultStr);
                     } catch (Exception e) {
                         e.printStackTrace();
-                        errorCallback.invoke(e.getMessage());
+                        promise.reject("decodeFail", e.getMessage());
                     }
                 }
             }).start();

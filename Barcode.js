@@ -7,7 +7,6 @@
 
 
 import React, {
-   
     Component,
 } from 'react'
 import {
@@ -77,6 +76,10 @@ export default class Barcode extends Component {
         else {
             this.startScan()
         }
+    }
+
+    _decodeFromPath = (path) => {
+        return BarcodeManager.DecodeFromPath(path);
     }
 }
 
