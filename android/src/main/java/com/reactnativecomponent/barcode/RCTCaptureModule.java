@@ -127,7 +127,7 @@ public class RCTCaptureModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void DecodeFromPath(final String path, final Promise promise) {
+    public void decodeFromPath(final String path, final Promise promise) {
 
             new Thread(new Runnable() {
                 public void run() {

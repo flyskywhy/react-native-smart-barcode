@@ -78,8 +78,8 @@ export default class Barcode extends Component {
         }
     }
 
-    _decodeFromPath = (path) => {
-        return BarcodeManager.DecodeFromPath(path);
+    decodeFromPath = (path) => {
+        return BarcodeManager.decodeFromPath(path);
     }
 }
 
