@@ -105,6 +105,34 @@ RCT_CUSTOM_VIEW_PROPERTY(barCodeTypes, NSArray, RCTBarcode) {
     });
 }
 
+RCT_EXPORT_METHOD(startFlash) {
+    Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
+    if (captureDeviceClass != nil) {
+        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        AVCapturePhotoSettings *photosettings = [AVCapturePhotoSettings photoSettings];
+        if ([device hasTorch] && [device hasFlash]){
+            [device lockForConfiguration:nil];
+            [device setTorchMode:AVCaptureTorchModeOn];
+            photosettings.flashMode = AVCaptureFlashModeOn;
+            [device unlockForConfiguration];
+        }
+    }
+}
+
+RCT_EXPORT_METHOD(stopFlash) {
+    Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
+    if (captureDeviceClass != nil) {
+        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        AVCapturePhotoSettings *photosettings = [AVCapturePhotoSettings photoSettings];
+        if ([device hasTorch] && [device hasFlash]){
+            [device lockForConfiguration:nil];
+            [device setTorchMode:AVCaptureTorchModeOff];
+            photosettings.flashMode = AVCaptureFlashModeOn;
+            [device unlockForConfiguration];
+        }
+    }
+}
+
 RCT_EXPORT_METHOD(startSession) {
     #if TARGET_IPHONE_SIMULATOR
     return;
