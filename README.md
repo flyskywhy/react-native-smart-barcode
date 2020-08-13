@@ -15,7 +15,7 @@ The library uses [https://github.com/zxing/zxing][1] to decode the barcodes for 
 ## Installation
 
 ```
-npm install react-native-smart-barcode --save
+npm install @flyskywhy/react-native-smart-barcode --save
 ```
 
 ## Notice
@@ -42,7 +42,7 @@ It can only be used greater-than-equal react-native 0.4.0 for ios, if you want t
 ```
 ...
 include ':react-native-smart-barcode'
-project(':react-native-smart-barcode').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-smart-barcode/android')
+project(':react-native-smart-barcode').projectDir = new File(rootProject.projectDir, '../node_modules/@flyskywhy/react-native-smart-barcode/android')
 ```
 
 * In `android/app/build.gradle`
@@ -132,8 +132,8 @@ see [ReactNativeComponentDemos][0]
 
 ## Usage
 
-Install the package from npm with `npm install react-native-smart-barcode --save`.
-Then, require it from your app's JavaScript files with `import Barcode from 'react-native-smart-barcode'`.
+Install the package from npm with `npm install @flyskywhy/react-native-smart-barcode --save`.
+Then, require it from your app's JavaScript files with `import Barcode from '@flyskywhy/react-native-smart-barcode'`.
 
 ```js
 
@@ -147,7 +147,7 @@ import {
     Alert,
 } from 'react-native'
 
-import Barcode from 'react-native-smart-barcode'
+import Barcode from '@flyskywhy/react-native-smart-barcode'
 import TimerEnhance from 'react-native-smart-timer-enhance'
 
 class BarcodeTest extends Component {
