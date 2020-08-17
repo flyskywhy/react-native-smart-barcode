@@ -14,8 +14,14 @@ The library uses [https://github.com/zxing/zxing][1] to decode the barcodes for 
 
 ## Installation
 
+For RN >= 0.60
 ```
 npm install @flyskywhy/react-native-smart-barcode --save
+```
+
+For RN < 0.60
+```
+npm install @flyskywhy/react-native-smart-barcode@1.1.x --save
 ```
 
 ## Notice
@@ -24,6 +30,7 @@ It can only be used greater-than-equal react-native 0.4.0 for ios, if you want t
 
 
 ## Installation (iOS)
+For RN < 0.60, need files edited below:
 
 * Drag RCTBarCode.xcodeproj to your project on Xcode.
 
@@ -36,6 +43,7 @@ It can only be used greater-than-equal react-native 0.4.0 for ios, if you want t
 * Add `Privacy - Camera Usage Description` property in your info.plist(for ios 10)
 
 ## Installation (Android)
+For RN < 0.60, need files edited below:
 
 * In `android/settings.gradle`
 
@@ -52,7 +60,7 @@ project(':react-native-smart-barcode').projectDir = new File(rootProject.project
 dependencies {
     ...
     // From node_modules
-    compile project(':react-native-smart-barcode')
+    implementation project(':react-native-smart-barcode')
 }
 ```
 

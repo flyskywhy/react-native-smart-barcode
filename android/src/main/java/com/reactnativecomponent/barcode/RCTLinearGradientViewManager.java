@@ -4,7 +4,7 @@ package com.reactnativecomponent.barcode;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.ViewGroup;
 
