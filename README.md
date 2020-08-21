@@ -17,11 +17,14 @@ The library uses [https://github.com/zxing/zxing][1] to decode the barcodes for 
 For RN >= 0.60
 ```
 npm install @flyskywhy/react-native-smart-barcode --save
+cd ios
+pod install
 ```
 
 For RN < 0.60
 ```
 npm install @flyskywhy/react-native-smart-barcode@1.1.x --save
+react-native link @flyskywhy/react-native-smart-barcode
 ```
 
 ## Notice
