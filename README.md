@@ -1,9 +1,9 @@
 # react-native-smart-barcode
 
-[![npm](https://img.shields.io/npm/v/react-native-smart-barcode.svg)](https://www.npmjs.com/package/react-native-smart-barcode)
-[![npm](https://img.shields.io/npm/dm/react-native-smart-barcode.svg)](https://www.npmjs.com/package/react-native-smart-barcode)
-[![npm](https://img.shields.io/npm/dt/react-native-smart-barcode.svg)](https://www.npmjs.com/package/react-native-smart-barcode)
-[![npm](https://img.shields.io/npm/l/react-native-smart-barcode.svg)](https://github.com/react-native-component/react-native-smart-barcode/blob/master/LICENSE)
+[![npm version](http://img.shields.io/npm/v/@flyskywhy/react-native-smart-barcode.svg?style=flat-square)](https://npmjs.org/package/@flyskywhy/react-native-smart-barcode "View this project on npm")
+[![npm downloads](http://img.shields.io/npm/dm/@flyskywhy/react-native-smart-barcode.svg?style=flat-square)](https://npmjs.org/package/@flyskywhy/react-native-smart-barcode "View this project on npm")
+[![npm licence](http://img.shields.io/npm/dt/@flyskywhy/react-native-smart-barcode.svg?style=flat-square)](https://npmjs.org/package/@flyskywhy/react-native-smart-barcode "View this project on npm")
+[![Platform](https://img.shields.io/badge/platform-ios%20%7C%20android-989898.svg?style=flat-square)](https://npmjs.org/package/@flyskywhy/react-native-smart-barcode "View this project on npm")
 
 A smart barcode scanner component for React Native app.
 The library uses [https://github.com/zxing/zxing][1] to decode the barcodes for android, and also supports ios.
