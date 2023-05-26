@@ -46,6 +46,27 @@ For RN < 0.60, need files edited below:
 * Add `Privacy - Camera Usage Description` property in your info.plist(for ios 10)
 
 ## Installation (Android)
+If got
+```
+> A failure occurred while executing com.android.build.gradle.tasks.VerifyLibraryResourcesTask$Action
+   > Android resource linking failed
+     ERROR: node_modules/@flyskywhy/react-native-smart-barcode/android/build/intermediates/merged_res/release/values-v26/values-v26.xml:7: AAPT: error: resource android:attr/colorError not found.
+```
+you may need add below into `YOUR_APP/android/build.gradle`:
+```
+subprojects {
+    afterEvaluate {
+        project ->
+            if (project.hasProperty("android")) {
+                android {
+                    compileSdkVersion = rootProject.compileSdkVersion
+                    buildToolsVersion = rootProject.buildToolsVersion
+                }
+            }
+    }
+}
+```
+
 For RN < 0.60, need files edited below:
 
 * In `android/settings.gradle`
