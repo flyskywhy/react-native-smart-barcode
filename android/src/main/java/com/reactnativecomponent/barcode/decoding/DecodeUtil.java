@@ -41,12 +41,20 @@ public class DecodeUtil {
         return Bitmap.createScaledBitmap(weak.get(), (int)(width/scale), (int)(height/scale), true);
     }
 
+    private static boolean isInverted = false;
+
     public static String getStringFromQRCode(String path) {
         String httpString = null;
 
         Bitmap bmp = convertToBitmap(path);
-        byte[] data = getYUV420sp(bmp.getWidth(), bmp.getHeight(), bmp);
-        // 处理
+        int width = bmp.getWidth();
+        int height = bmp.getHeight();
+        byte[] data = getYUV420sp(width, height, bmp);
+        isInverted = !isInverted;
+        if (isInverted) {
+          invertY_YUV420P(data, width, height);
+        }
+       // 处理
         try {
             Hashtable<DecodeHintType, Object> hints = new Hashtable<DecodeHintType, Object>();
 //            hints.put(DecodeHintType.CHARACTER_SET, "utf-8");
@@ -89,7 +97,8 @@ public class DecodeUtil {
 
         scaled.getPixels(argb, 0, inputWidth, 0, 0, inputWidth, inputHeight);
 
-        byte[] yuv = new byte[inputWidth * inputHeight * 3 / 2];
+        byte[] yuv = new byte[(inputWidth % 2 == 0 ? inputWidth : inputWidth + 1)
+          * (inputHeight % 2 == 0 ? inputHeight : inputHeight + 1) * 3 / 2];
 
         encodeYUV420SP(yuv, argb, inputWidth, inputHeight);
 
