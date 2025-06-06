@@ -98,6 +98,15 @@ public class DecodeUtil {
         return yuv;
     }
 
+    public static void invertY_YUV420P(byte[] yuvData, int width, int height) {
+        int ySize = width * height;
+
+        // 反色 Y 分量
+        for (int i = 0; i < ySize; ++i) {
+            yuvData[i] = (byte)(255 - (yuvData[i] & 0xFF));
+        }
+    }
+
     /**
      * RGB转YUV420sp
      *

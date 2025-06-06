@@ -32,6 +32,7 @@ import com.reactnativecomponent.barcode.CaptureView;
 import com.reactnativecomponent.barcode.R;
 import com.reactnativecomponent.barcode.camera.CameraManager;
 import com.reactnativecomponent.barcode.camera.PlanarYUVLuminanceSource;
+import com.reactnativecomponent.barcode.decoding.DecodeUtil;
 
 
 import java.util.Hashtable;
@@ -68,6 +69,7 @@ DecodeHandler extends Handler {
   }
 
 
+  private boolean isInverted = false;
 
   /**
    * Decode the data within the viewfinder rectangle, and time how long it took. For efficiency,
@@ -107,6 +109,12 @@ DecodeHandler extends Handler {
 	// it says: "It works for any pixel format where
 	// the Y channel is planar and appears first, including
 	// YCbCr_420_SP and YCbCr_422_SP."
+
+	isInverted = !isInverted;
+	if (isInverted) {
+		DecodeUtil.invertY_YUV420P(data, width, height);
+	}
+
 	byte[] rotatedData = new byte[data.length];
 	for (int y = 0; y < height; y++) {
 		for (int x = 0; x < width; x++)
